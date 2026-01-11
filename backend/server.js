@@ -20,7 +20,10 @@ app.post('/api/order/webhook', express.raw({ type: 'application/json' }), verify
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['https://forever-frontend-3hsz.onrender.com', 'http://localhost:5173'],
+  credentials: true
+}));
 
 // Graceful JSON parse errors from express.json()
 app.use((err, req, res, next) => {
